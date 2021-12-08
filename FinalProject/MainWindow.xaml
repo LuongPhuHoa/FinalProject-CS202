@@ -45,7 +45,7 @@
                                 <TextBlock Text="  Add method" Foreground="White"/>
                             </StackPanel>
                         </Button>
-                        <Button Margin="0,0,7,0" x:Name="DeleteButotn" Click="DeleteButon_Click">
+                        <Button Margin="0,0,7,0" x:Name="DeleteButton" Click="DeleteButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/icons8-delete-database-48.png" Margin="0 0 3 2"/>
                                 <Image Source="Images/icons8-delete-document-64.png" Margin="0 1 0 2"/>
@@ -71,7 +71,6 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Presets: " FontWeight="Bold" Foreground="White"/>
                                 <ComboBox Name="PresetCombobox" Width="100" Margin="0 2 0 2 ">
-
                                 </ComboBox>
                             </StackPanel>
                         </Button>
