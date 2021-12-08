@@ -79,8 +79,7 @@
 
         </StackPanel>
         <Grid Grid.Row="1">
-
-            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,-44,750.6,9.6">
+            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,751,10" d:ItemsSource="{d:SampleData ItemCount=5}" Height="433" VerticalAlignment="Bottom">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Edit" Click="EditButtonClicked"/>
