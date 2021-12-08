@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Batch Rename" Height="500" Width="1000" Loaded="Window_Loaded"
+        Icon="/Images/data.png" Background="#FFABD1C6">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -37,16 +38,16 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button Margin="5,0,7,0" x:Name="AddMethodButton" Click="AddMethodButton_Click">
+                        <Button  Margin="5,0,7,0" x:Name="AddMethodButton" Click="AddMethodButton_Click">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/icons8-add-file-64.png" Height="20" Width="20"/>
+                                <Image Source="/Images/icons8-add-file-64.png" Height="20" Width="20"/>
                                 <TextBlock Text="  Add method" Foreground="White"/>
                             </StackPanel>
                         </Button>
-                        <Button Margin="0,0,7,0" x:Name="DeleteButotn" Click="DeleteButon_Click">
+                        <Button  Margin="0,0,7,0" x:Name="DeleteButton" Click="DeleteButton_Click">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/icons8-delete-database-48.png" Margin="0 0 3 2"/>
-                                <Image Source="Images/icons8-delete-document-64.png" Margin="0 1 0 2"/>
+                                <Image Source="/Images/icons8-delete-database-48.png" Margin="0 0 3 2"/>
+                                <Image Source="/Images/icons8-delete-document-64.png" Margin="0 1 0 2"/>
                                 <TextBlock Text="  Clear " Margin="1 3 0 0" Foreground="White"/>
                             </StackPanel>
                         </Button>
@@ -55,14 +56,14 @@
 
                 <ToolBar Name="PresetBar" Background="#FF004643" Foreground="White">
                     <StackPanel Orientation="Horizontal" Height="25">
-                        <Button Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
+                        <Button  Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <Image Source="/Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
-                        <Button Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
+                        <Button  Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <Image Source="/Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
                         <Button  Name="ChoosePreset" Margin="5,0,5,0">
@@ -109,7 +110,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="AddFileButtons"  Margin="5 0 5 0" Click="AddFileButtons_Click">
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="Images/Add.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
+                                            <Image Source="/Images/Add.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
                                             <TextBlock Text="Add" Foreground="White"/>
                                         </StackPanel>
                                     </Button>
@@ -138,7 +139,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="AddFolderButtons" Margin="5 0 5 0" Click="AddFolderButtons_Click">
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="Images/add-folder.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
+                                            <Image Source="/Images/add-folder.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
                                             <TextBlock Text="Add" Foreground="White"/>
                                         </StackPanel>
                                     </Button>
