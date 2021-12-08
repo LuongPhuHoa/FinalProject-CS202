@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\add %281%29.png" />
+    <None Remove="Images\add-folder.png" />
+    <None Remove="Images\Add.png" />
+    <None Remove="Images\data.png" />
+    <None Remove="Images\file-transfer %281%29.png" />
+    <None Remove="Images\file-transfer.png" />
+    <None Remove="Images\icons8-add-file-64.png" />
+    <None Remove="Images\icons8-add-new-16.png" />
+    <None Remove="Images\icons8-checkmark-64.png" />
+    <None Remove="Images\icons8-delete-64.png" />
+    <None Remove="Images\icons8-delete-database-48.png" />
+    <None Remove="Images\icons8-delete-document-64.png" />
+    <None Remove="Images\icons8-new-file-64.png" />
+    <None Remove="Images\LoadPreset.png" />
+    <None Remove="Images\refresh.png" />
+    <None Remove="Images\SavePreset.png" />
+    <None Remove="Images\start.png" />
+    <None Remove="Images\video-play.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\add (1).png" />
+    <Resource Include="Images\add-folder.png" />
+    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\data.png" />
+    <Resource Include="Images\file-transfer (1).png" />
+    <Resource Include="Images\file-transfer.png" />
+    <Resource Include="Images\icons8-add-file-64.png" />
+    <Resource Include="Images\icons8-add-new-16.png" />
+    <Resource Include="Images\icons8-checkmark-64.png" />
+    <Resource Include="Images\icons8-delete-64.png" />
+    <Resource Include="Images\icons8-delete-database-48.png" />
+    <Resource Include="Images\icons8-delete-document-64.png" />
+    <Resource Include="Images\icons8-new-file-64.png" />
+    <Resource Include="Images\LoadPreset.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\SavePreset.png" />
+    <Resource Include="Images\start.png" />
+    <Resource Include="Images\video-play.png" />
+  </ItemGroup>
+
+</Project>
