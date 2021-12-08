@@ -83,7 +83,7 @@
                 <RowDefinition Height="0*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,751,10" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.RowSpan="2">
+            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,0,10" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.RowSpan="2" HorizontalAlignment="Left" Width="231">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Edit" Click="EditButtonClicked"/>
@@ -99,7 +99,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TabControl Margin="258,0,0,10" Grid.RowSpan="2">
+            <TabControl Margin="246,0,0,10" Grid.RowSpan="2">
                 <TabItem Background="#FFF9BC60" BorderBrush="#FFF9BC60">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
