@@ -12,8 +12,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="33"/>
-            <RowDefinition/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <ToolBarTray Background="#FF004643">
@@ -26,7 +26,6 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-
                 </ToolBar>
 
                 <ToolBar x:Name="MethodBar" Height="30" Background="#FF004643" Margin="0,0,10,0" Foreground="#FF004643">
@@ -81,7 +80,8 @@
 
         </StackPanel>
         <Grid Grid.Row="1">
-            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,751,10" d:ItemsSource="{d:SampleData ItemCount=5}" Height="433" VerticalAlignment="Bottom">
+
+            <ListBox Name="ActionListBox" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,-44,750.6,9.6">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Edit" Click="EditButtonClicked"/>
@@ -90,14 +90,14 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel Height="40">
-                            <TextBlock Text="{Binding name}" FontSize="15"/>
-                            <TextBlock Text=": " FontSize="15"/>
-                            <TextBlock Text="{Binding Args.Details}" FontSize="15"/>
+                            <TextBlock Text="{Binding name}" FontFamily="Comic Sans MS" FontSize="15"/>
+                            <TextBlock Text=": " FontFamily="Comic Sans MS" FontSize="15"/>
+                            <TextBlock Text="{Binding Args.Details}" FontFamily="Comic Sans MS" FontSize="15"/>
                         </WrapPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TabControl Margin="258,0,0,10">
+            <TabControl Margin="258,-44,-0.4,9.6">
                 <TabItem Background="#FFF9BC60" BorderBrush="#FFF9BC60">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
