@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 namespace FinalProject
 {
     public delegate string StringProcessor(string origin);
+    public interface StringArgs {
+        string Details { get; }
+        string ParseArgs();
+    }
     public interface IRenameRules
     {
         string name { get; }
         StringProcessor Processor { get; }
-        string Details { get; }
         IRenameRules Clone();
 
         void ShowEditDialog();
