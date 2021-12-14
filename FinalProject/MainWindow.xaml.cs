@@ -26,6 +26,7 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<IRenameRules> methodList = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +49,8 @@ namespace FinalProject
 
         private void EditButtonClicked(object sender, RoutedEventArgs e)
         {
-
+            var method = ActionListBox.SelectedItem as IRenameRules;
+            method.ShowEditDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -67,7 +69,23 @@ namespace FinalProject
 
         private void AddMethodButton_Click(object sender, RoutedEventArgs e)
         {
+            if (actionCombobox.SelectedItem == null)
+            {
+                MessageBox.Show("No method selected to add ?");
+                return;
+            }
+            var methodSelected = actionCombobox.SelectedItem as IRenameRules;
+            var instance = methodSelected.Clone();
 
+            ActionListBox.Items.Add(instance);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            methodList = new ObservableCollection<IRenameRules>() {
+                new CaseHandling(),
+            };
+            actionCombobox.ItemsSource = methodList;
         }
     }
 }
