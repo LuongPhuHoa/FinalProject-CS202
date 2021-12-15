@@ -11,6 +11,8 @@
     <None Remove="Images\add %281%29.png" />
     <None Remove="Images\add-folder.png" />
     <None Remove="Images\Add.png" />
+    <None Remove="Images\check.png" />
+    <None Remove="Images\close.png" />
     <None Remove="Images\data.png" />
     <None Remove="Images\file-transfer %281%29.png" />
     <None Remove="Images\file-transfer.png" />
@@ -104,9 +106,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\add (1).png" />
     <Resource Include="Images\add-folder.png" />
     <Resource Include="Images\Add.png" />
+    <Resource Include="Images\check.png" />
+    <Resource Include="Images\close.png" />
     <Resource Include="Images\data.png" />
     <Resource Include="Images\file-transfer (1).png" />
     <Resource Include="Images\file-transfer.png" />
