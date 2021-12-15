@@ -11,9 +11,5 @@ namespace FinalProject
     {
         string name { get; }
         StringProcessor Processor { get; }
-        /*string Details { get; }
-        IRenameRules Clone();
-
-        void ShowEditDialog();*/
     }
 }
