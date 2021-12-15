@@ -18,6 +18,7 @@ using System.IO;
 using System.ComponentModel;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
+using FinalProject.Rules;
 
 namespace FinalProject
 {

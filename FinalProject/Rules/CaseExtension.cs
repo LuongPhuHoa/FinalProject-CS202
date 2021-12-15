@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject
+namespace FinalProject.Rules
 {
     public class CaseArgs : StringArgs, INotifyPropertyChanged
     {
