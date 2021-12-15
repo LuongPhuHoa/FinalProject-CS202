@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 namespace FinalProject
 {
     public delegate string StringProcessor(string origin);
+    public interface StringArgs {
+        string Details { get; }
+        string ParseArgs();
+    }
     public interface IRenameRules
     {
         string name { get; }
