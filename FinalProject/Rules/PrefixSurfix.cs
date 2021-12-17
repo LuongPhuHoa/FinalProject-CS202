@@ -28,7 +28,7 @@ namespace FinalProject.Rules
             return 3;
         }
 
-        public string CaseType
+        public string Type
         {
             get => _type; set
             {
