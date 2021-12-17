@@ -51,7 +51,7 @@ namespace FinalProject.Rules
     {
         public string name => "Case Handling";
 
-        public StringArgs Args { get; set; }
+        public StringArgs? Args { get; set; }
         private string _transform(string origin)
         {
             var caseArgs = Args as CaseArgs;

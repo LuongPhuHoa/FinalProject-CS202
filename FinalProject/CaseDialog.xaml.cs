@@ -20,7 +20,7 @@ namespace FinalProject
     /// </summary>
     public partial class CaseDialog : Window
     {
-        public string oldCase;
+        public string? oldCase;
         public string currentCase;
         public CaseDialog(CaseArgs args)
         {

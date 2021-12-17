@@ -1,0 +1,45 @@
+﻿<Window x:Class="FinalProject.PrefixSurfixDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalProject"
+        mc:Ignorable="d"
+        Title="PrefixSurfixDialog" Height="450" Width="600">
+    <Canvas>
+        <TextBlock  Text="Adding Prefex/Surfix"
+                    FontSize="32" Canvas.Left="147" Canvas.Top="44"
+                    FontWeight="SemiBold"/>
+        <StackPanel Orientation="Vertical" Canvas.Left="177" Canvas.Top="104" Width="243">
+            <TextBlock Text="Options" FontSize="20"
+                       Margin="75,20,100,35" Width="91"/>
+            <StackPanel Orientation="Horizontal" >
+                <RadioButton Content="Prefix" FontSize="18" Margin="0,0,90,0"
+                             Padding="8,-6,0,0"
+                             Name="prefixBtn"/>
+                <RadioButton Content="Surfix" FontSize="18" Margin="0,0,20,0"
+                             Padding="8,-6,0,0"
+                              x:Name="sufixBtn"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Width="300" Height="50" Canvas.Left="150" Canvas.Top="313">
+            <Border VerticalAlignment="Stretch" Background="LightGray" BorderThickness="1" BorderBrush="Black">
+                <Button Style="{StaticResource MyButton}" Height="50" Width="110" Click="submit_Click" BorderBrush="AliceBlue" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/check.png" Width="30" Height="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Submit" FontSize="18"/>
+                    </StackPanel>
+                </Button>
+            </Border>
+            <Border VerticalAlignment="Stretch" Background="LightGray" BorderThickness="1" BorderBrush="Black" Margin="70,0,0,0">
+                <Button Style="{StaticResource MyButton}" Height="50" Width="110" Click="cancel_Click" BorderBrush="AliceBlue" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/close.png" Width="30" Height="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Cancel" FontSize="18"/>
+                    </StackPanel>
+                </Button>
+            </Border>
+        </StackPanel>
+        <TextBox Height="32" Canvas.Left="211" TextWrapping="Wrap" Canvas.Top="237" Width="167" FontSize="18"/>
+    </Canvas>
+</Window>
