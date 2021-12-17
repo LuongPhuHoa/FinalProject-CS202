@@ -22,7 +22,7 @@
                         <Button Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="StartBatchButton" Click="StartBatchButtonButton_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Image Source="Images/start.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"></TextBlock>
+                                <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" ></TextBlock>
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -41,14 +41,14 @@
                         <Button  Margin="5,0,7,0" x:Name="AddMethodButton" Click="AddMethodButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/icons8-add-file-64.png" Height="20" Width="20"/>
-                                <TextBlock Text="  Add method" Foreground="White"/>
+                                <TextBlock Text="  Add method" Foreground="Black"/>
                             </StackPanel>
                         </Button>
                         <Button Margin="0,0,7,0" x:Name="DeleteButton" Click="DeleteButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/icons8-delete-database-48.png" Margin="0 0 3 2"/>
                                 <Image Source="/Images/icons8-delete-document-64.png" Margin="0 1 0 2"/>
-                                <TextBlock Text="  Clear " Margin="1 3 0 0" Foreground="White"/>
+                                <TextBlock Text="  Clear " Margin="1 3 0 0" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -68,7 +68,7 @@
                         </Button>
                         <Button  Name="ChoosePreset" Margin="5,0,5,0">
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="Presets: " FontWeight="Bold" Foreground="White"/>
+                                <Label Content="Presets: " FontWeight="Bold"/>
                                 <ComboBox Name="PresetCombobox" Width="100" Margin="0 2 0 2 ">
                                 </ComboBox>
                             </StackPanel>
@@ -113,7 +113,7 @@
                                     <Button x:Name="AddFileButtons"  Margin="5 0 5 0" Click="AddFileButtons_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <Image Source="/Images/Add.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
-                                            <TextBlock Text="Add" Foreground="White"/>
+                                            <TextBlock Text="Add" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
@@ -121,9 +121,9 @@
                         </ToolBarTray>
                         <DataGrid Name="FileTab" Background="#FFABD1C6" GridLinesVisibility="All" FontWeight="Bold" BorderBrush="#FFABD1C6">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="File Name" Width="150" Binding="{Binding Filename}"/>
+                                <DataGridTextColumn Header="File Name" Width="150" Binding="{Binding FileName}"/>
                                 <DataGridTextColumn Header="New File Name" Width="150" Binding="{Binding Newfilename}"/>
-                                <DataGridTextColumn Header="File Path" Width="150" Binding="{Binding Path}"/>
+                                <DataGridTextColumn Header="File Path" Width="150" Binding="{Binding FilePath}"/>
                                 <DataGridTextColumn Header="Error" Width="*" Binding="{Binding Erro}"/>
                             </DataGrid.Columns>
                         </DataGrid>
@@ -142,7 +142,7 @@
                                     <Button x:Name="AddFolderButtons" Margin="5 0 5 0" Click="AddFolderButtons_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <Image Source="/Images/add-folder.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
-                                            <TextBlock Text="Add" Foreground="White"/>
+                                            <TextBlock Text="Add" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
@@ -150,9 +150,9 @@
                         </ToolBarTray>
                         <DataGrid Name="FolderTab" Background="Transparent" GridLinesVisibility="All" FontWeight="Bold">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Folder Name" Width="150" Binding="{Binding Foldername}"/>
+                                <DataGridTextColumn Header="Folder Name" Width="150" Binding="{Binding FolderName}"/>
                                 <DataGridTextColumn Header="New Folder Name" Width="150" Binding="{Binding Newfolder}"/>
-                                <DataGridTextColumn Header="Folder Path" Width="150" Binding="{Binding Path}"/>
+                                <DataGridTextColumn Header="Folder Path" Width="150" Binding="{Binding FolderPath}"/>
                                 <DataGridTextColumn Header="Error" Width="*" Binding="{Binding Erro}"/>
                             </DataGrid.Columns>
                         </DataGrid>
