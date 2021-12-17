@@ -34,6 +34,7 @@ namespace FinalProject
             if (prefixBtn.IsChecked == true)
             {
                 current = "prefix";
+                
                 this.DialogResult = true;
             }
             else if (surfixBtn.IsChecked == true)

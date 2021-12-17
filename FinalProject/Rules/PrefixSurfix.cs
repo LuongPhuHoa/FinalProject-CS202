@@ -9,7 +9,7 @@ namespace FinalProject.Rules
 {
     public class PrefixSurfix : StringArgs, INotifyPropertyChanged
     {
-        private string _type; //prefix, surfix
+        private string? _type; //prefix, surfix
 
         public string Details => $"Adding {_type}";
 
@@ -45,31 +45,50 @@ namespace FinalProject.Rules
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
             }
         }
+    }
+    public class PrefixSurfixHandling : IRenameRules
+    {
+        public string content;
+        public string name => "Adding prefix/surfix";
 
-        public class Handling : IRenameRules
+        public StringArgs? Args { get; set; }
+
+        public StringProcessor Processor => _transform;
+
+        private string _transform(string origin)
         {
-            public string name => "Adding prefix/surfix";
-
-            public StringArgs? Args { get; set; }
-
-            public StringProcessor Processor => _transform;
-
-            private string _transform(string origin)
+            var option = Args as PrefixSurfix;
+            int _caseType = option.GetType();
+            string result = "";
+            if (_caseType == 1)
             {
-                return origin;
+                result = result + content + origin;
+                return result;
             }
-
-            public IRenameRules Clone()
+            else if (_caseType == 2)
             {
-                return new Handling()
-                {
-                    Args = new PrefixSurfix()
-                };
+                result = result + origin + content;
+                return result;
             }
+            else return origin;
+        }
 
-            public void ShowEditDialog()
+        public IRenameRules Clone()
+        {
+            return new PrefixSurfixHandling()
             {
-                throw new NotImplementedException();
+                Args = new PrefixSurfix()
+            };
+        }
+
+        public void ShowEditDialog()
+        {
+            var screen = new PrefixSurfixDialog(Args as PrefixSurfix);
+            if (screen.ShowDialog() == true)
+            {
+                var caseArgs = Args as PrefixSurfix;
+
+                caseArgs.Type = screen.current;
             }
         }
     }

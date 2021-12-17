@@ -85,6 +85,8 @@ namespace FinalProject
         {
             methodList = new ObservableCollection<IRenameRules>() {
                 new CaseHandling(),
+                new PrefixSurfixHandling(),
+                new ReplaceAction(),
             };
             actionCombobox.ItemsSource = methodList;
         }
