@@ -16,46 +16,41 @@ using FinalProject.Rules;
 namespace FinalProject
 {
     /// <summary>
-    /// Interaction logic for CaseDialog.xaml
+    /// Interaction logic for PrefixSurfixDialog.xaml
     /// </summary>
-    public partial class CaseDialog : Window
+    public partial class PrefixSurfixDialog : Window
     {
-        public string currentCase;
-        public CaseDialog(CaseArgs args)
+        public string current;
+        public PrefixSurfixDialog(PrefixSurfix arg)
         {
             InitializeComponent();
-            currentCase = args.CaseType;
-            if (currentCase == "upper") upperBtn.IsChecked = true;
-            else if (currentCase == "lower") lowerBtn.IsChecked = true;
-            else pascalBtn.IsChecked = true;
-
+            current = arg.Type;
+            if (current == "prefix") prefixBtn.IsChecked = true;
+            else if (current == "surfix") surfixBtn.IsChecked = true;
         }
+
         private void submit_Click(object sender, RoutedEventArgs e)
         {
-            if (upperBtn.IsChecked == true)
+            if (prefixBtn.IsChecked == true)
             {
-                currentCase = "upper";
+                current = "prefix";
+                
                 this.DialogResult = true;
             }
-            else if (lowerBtn.IsChecked == true)
+            else if (surfixBtn.IsChecked == true)
             {
-                currentCase = "lower";
-                this.DialogResult = true;
-            }
-            else if (pascalBtn.IsChecked == true)
-            {
-                currentCase = "pascal";
+                current = "surfix";
                 this.DialogResult = true;
             }
             else
             {
-                MessageBox.Show("Chose your case option!");
+                MessageBox.Show("Chose your option!");
             }
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
