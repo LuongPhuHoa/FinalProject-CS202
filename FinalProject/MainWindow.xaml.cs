@@ -19,6 +19,7 @@ using System.ComponentModel;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using FinalProject.Rules;
+using FinalProject.Class;
 
 namespace FinalProject
 {
@@ -27,6 +28,8 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<FolderClass> folderList = null;
+        ObservableCollection<FileClass> fileList = null;
         ObservableCollection<IRenameRules> methodList = null;
         public MainWindow()
         {
@@ -40,12 +43,37 @@ namespace FinalProject
 
         private void AddFolderButtons_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog openFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (openFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
 
+                string[] path = Directory.GetDirectories(openFolderDialog.SelectedPath);
+                foreach (var dir in path)
+                {
+                    FolderTab.Items.Add(new FolderClass()
+                    {
+                        FolderName = new DirectoryInfo(dir).Name,
+                        FolderPath = dir
+                    });
+                }
+            }
         }
 
         private void AddFileButtons_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.FolderBrowserDialog openFileDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] path = Directory.GetFiles(openFileDialog.SelectedPath);
+                foreach (string item in path)
+                {
+                    FileTab.Items.Add(new FileClass()
+                    {
+                        FileName = Path.GetFileName(item),
+                        FilePath = item
+                    });
+                }
+            }
         }
 
         private void EditButtonClicked(object sender, RoutedEventArgs e)
