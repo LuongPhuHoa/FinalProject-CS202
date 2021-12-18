@@ -19,7 +19,7 @@ using System.ComponentModel;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using FinalProject.Rules;
-using FinalProject.Class;
+using FinalProject.BrowseInit;
 
 namespace FinalProject
 {
@@ -34,11 +34,6 @@ namespace FinalProject
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void LoadPreset_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void AddFolderButtons_Click(object sender, RoutedEventArgs e)
@@ -84,8 +79,19 @@ namespace FinalProject
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            ActionListBox.ItemsSource = null;
+            ActionListBox.Items.Clear();
+            FileTab.ItemsSource = null;
+            FileTab.Items.Clear();
+            FolderTab.ItemsSource = null;
+            FolderTab.Items.Clear();
+        }
+
+        private void LoadPreset_Click(object sender, RoutedEventArgs e)
+        {
 
         }
+
         private void SavePreset_Click(object sender, RoutedEventArgs e)
         {
 
@@ -93,7 +99,7 @@ namespace FinalProject
 
         private void StartBatchButtonButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void AddMethodButton_Click(object sender, RoutedEventArgs e)
