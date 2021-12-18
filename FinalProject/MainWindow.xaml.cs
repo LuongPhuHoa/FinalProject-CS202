@@ -85,6 +85,9 @@ namespace FinalProject
             FileTab.Items.Clear();
             FolderTab.ItemsSource = null;
             FolderTab.Items.Clear();
+            // clear source collections
+            if (fileList != null) fileList.Clear();
+            if (folderList != null) folderList.Clear();
         }
 
         private void LoadPreset_Click(object sender, RoutedEventArgs e)
@@ -99,7 +102,56 @@ namespace FinalProject
 
         private void StartBatchButtonButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            folderList = new ObservableCollection<FolderClass>();
+            fileList = new ObservableCollection<FileClass>();
+            // Add item from fileTab/folderTab to fileList/folderList
+            foreach (FileClass file in FileTab.Items) fileList.Add(file);
+            foreach (FolderClass folder in FolderTab.Items) folderList.Add(folder);
+
+            //No method is selected!
+            if (methodList.Count == 0)
+            {
+                MessageBox.Show("Method box is empty!");
+                return;
+            }
+            // No file or folder in fileTab/folderTab
+            if (fileList.Count == 0 && folderList.Count == 0)
+            {
+                MessageBox.Show("No file/folder in List!");
+                return;
+            }
+
+
+            // Batching file
+            for (int i = 0; i < fileList.Count; i++)
+            {
+                string result = fileList[i].FileName;
+                string path = fileList[i].FilePath;
+                foreach (IRenameRules rule in actionCombobox.Items)
+                {
+                    result = rule.Processor.Invoke(result);
+                    ObservableCollection<FileClass> temp = new ObservableCollection<FileClass>(fileList);
+                    temp.Remove(temp[i]);
+                    fileList[i].FileRename = result;
+                    foreach (FileClass file in temp)
+                    {
+                        if (result == file.FileName)
+                        {
+                            fileList[i].FileError = "dupplicate file name!";
+                        }
+                    }
+                    if (result == " ")
+                    {
+                        fileList[i].FileError = "Error.";
+                        break;
+                    }
+                    else if (fileList[i].FileError != "Duplicate file name!" && fileList[i].FileError != "Error"!)
+                    {
+                        fileList[i].FileError = "Ok.";
+                    }
+                }
+            }
         }
 
         private void AddMethodButton_Click(object sender, RoutedEventArgs e)
