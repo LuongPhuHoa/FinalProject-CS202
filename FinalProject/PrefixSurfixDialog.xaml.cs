@@ -21,12 +21,15 @@ namespace FinalProject
     public partial class PrefixSurfixDialog : Window
     {
         public string current;
+        public string content;
+
         public PrefixSurfixDialog(PrefixSurfix arg)
         {
             InitializeComponent();
             current = arg.Type;
             if (current == "prefix") prefixBtn.IsChecked = true;
             else if (current == "surfix") surfixBtn.IsChecked = true;
+            contentBox.Text = arg.Content;
         }
 
         private void submit_Click(object sender, RoutedEventArgs e)
@@ -46,6 +49,8 @@ namespace FinalProject
             {
                 MessageBox.Show("Chose your option!");
             }
+            Content = contentBox.Text;
+            this.DialogResult = true;
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)

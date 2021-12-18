@@ -115,6 +115,7 @@ namespace FinalProject
                 new CaseHandling(),
                 new PrefixSurfixHandling(),
                 new ReplaceAction(),
+                new SpaceClean(),
             };
             actionCombobox.ItemsSource = methodList;
         }

@@ -9,9 +9,40 @@ namespace FinalProject.Rules
 {
     public class PrefixSurfix : StringArgs, INotifyPropertyChanged
     {
-        private string? _type; //prefix, surfix
+        public string _type; //prefix, surfix
+        public string _content;
 
-        public string Details => $"Adding {_type}";
+        public string Type
+        {
+            get => _type; set
+            {
+                _type = value;
+                NotifyChange("Type");
+                NotifyChange("Details");
+            }
+        }
+
+        public string Content
+        {
+            get => _content;
+
+            set
+            {
+                Content = value;
+                NotifyChange("Content");
+                NotifyChange("Details");
+            }
+        }
+
+        private void NotifyChange(string newEvent)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
+            }
+        }
+
+        public string Details => $"Adding {Type} : {Content}";
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -27,28 +58,9 @@ namespace FinalProject.Rules
                 return 2;
             return 3;
         }
-
-        public string Type
-        {
-            get => _type; set
-            {
-                _type = value;
-                NotifyChange("Type");
-                NotifyChange("Details");
-            }
-        }
-
-        private void NotifyChange(string newEvent)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
-            }
-        }
     }
     public class PrefixSurfixHandling : IRenameRules
     {
-        public string content;
         public string name => "Adding prefix/surfix";
 
         public StringArgs? Args { get; set; }
@@ -58,6 +70,7 @@ namespace FinalProject.Rules
         private string _transform(string origin)
         {
             var option = Args as PrefixSurfix;
+            var content = option.Content;
             int _caseType = option.GetType();
             string result = "";
             if (_caseType == 1)
@@ -87,7 +100,7 @@ namespace FinalProject.Rules
             if (screen.ShowDialog() == true)
             {
                 var caseArgs = Args as PrefixSurfix;
-
+                caseArgs.Content = screen.content;
                 caseArgs.Type = screen.current;
             }
         }

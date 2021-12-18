@@ -40,6 +40,6 @@
                 </Button>
             </Border>
         </StackPanel>
-        <TextBox x:Name="content" Height="32" Canvas.Left="211" TextWrapping="Wrap" Canvas.Top="237" Width="167" FontSize="18"/>
+        <TextBox x:Name="contentBox" Height="32" Canvas.Left="211" TextWrapping="Wrap" Canvas.Top="237" Width="167" FontSize="18"/>
     </Canvas>
 </Window>
