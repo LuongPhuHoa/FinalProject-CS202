@@ -101,18 +101,6 @@ namespace FinalProject
             if (folderList != null) folderList.Clear();
         }
 
-        private void LoadPreset_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SavePreset_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        
-
         private void AddMethodButton_Click(object sender, RoutedEventArgs e)
         {
             if (actionCombobox.SelectedItem == null)

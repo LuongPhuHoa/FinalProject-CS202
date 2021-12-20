@@ -42,7 +42,7 @@
                             <TextBlock Text="  Add method" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource MyButton}" Margin="0,0,7,0" x:Name="DeleteButotn" Click="DeleteButotn_Click">
+                    <Button Style="{StaticResource MyButton}" Margin="0,0,7,0" x:Name="DeleteButton" Click="DeleteButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/delete-database.png" Margin="0 0 3 2"/>
                             <Image Source="/Images/delete-document.png" Margin="0 1 0 2"/>
