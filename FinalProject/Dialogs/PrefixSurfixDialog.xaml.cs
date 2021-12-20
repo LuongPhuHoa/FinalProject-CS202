@@ -28,13 +28,12 @@ namespace FinalProject
         {
             InitializeComponent();
             current = arg.Type;
+            choice = arg.Choice;
+            content = arg.Content;
             if (current == "prefix") prefixBtn.IsChecked = true;
             else if (current == "surfix") surfixBtn.IsChecked = true;
             contentBox.Text = arg.Content;
-
-            current = arg.Type;
-            choice = arg.Choice;
-            content = arg.Content;
+            
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)

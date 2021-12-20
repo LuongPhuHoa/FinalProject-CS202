@@ -30,7 +30,7 @@ namespace FinalProject
     {
         ObservableCollection<FolderClass> folderList;
         ObservableCollection<FileClass> fileList;
-        ObservableCollection<IRenameRules> methodList;
+        List<IRenameRules> methodList;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace FinalProject
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            methodList = new ObservableCollection<IRenameRules>() {
+            methodList = new List<IRenameRules>() {
                 new CaseHandling(),
                 new PrefixSurfixHandling(),
                 new ReplaceAction(),
@@ -119,7 +119,7 @@ namespace FinalProject
             foreach (FolderClass folder in FolderTab.Items) folderList.Add(folder);
 
             //No method is selected!
-            if (methodList.Count == 0)
+            if (ActionListBox.Items.Count == 0)
             {
                 MessageBox.Show("Method box is empty!");
                 return;
@@ -137,7 +137,7 @@ namespace FinalProject
             {
                 string result = fileList[i].FileName;
                 string path = fileList[i].FilePath;
-                foreach (IRenameRules rule in actionCombobox.Items)
+                foreach (IRenameRules rule in ActionListBox.Items)
                 {
                     result = rule.Processor.Invoke(result);
                     ObservableCollection<FileClass> temp = new(fileList);
