@@ -147,7 +147,7 @@ namespace FinalProject
                     {
                         if (result == file.FileName)
                         {
-                            fileList[i].FileError = "dupplicate file name!";
+                            fileList[i].FileError = "Dupplicate file name!";
                         }
                     }
                     if (result == " ")
