@@ -103,11 +103,6 @@ namespace FinalProject
 
         private void AddMethodButton_Click(object sender, RoutedEventArgs e)
         {
-            if (actionCombobox.SelectedItem == null)
-            {
-                MessageBox.Show("No method selected to add ?");
-                return;
-            }
             var methodSelected = (IRenameRules)actionCombobox.SelectedItem;
             var instance = methodSelected.Clone();
 

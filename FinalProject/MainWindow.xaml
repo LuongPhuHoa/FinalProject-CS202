@@ -32,7 +32,7 @@
                     <ComboBox Width="125" x:Name="actionCombobox" Height="20">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding name}"/>
+                                <TextBlock Text="{Binding Name}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -70,7 +70,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel Height="40">
-                            <TextBlock Text="{Binding name}"  FontSize="15"/>
+                            <TextBlock Text="{Binding Name}"  FontSize="15"/>
                             <TextBlock Text=": " FontSize="15"/>
                             <TextBlock Text="{Binding Args.Details}" FontSize="15"/>
                         </WrapPanel>

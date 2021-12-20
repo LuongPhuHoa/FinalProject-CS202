@@ -5,11 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FinalProject.Rules;
 
 namespace FinalProject.Rules
 {
-    public class ReplaceAction : IRenameRules
+    class ReplaceAction : IRenameRules
     {
         public string Name => "Replace action";
 
@@ -32,15 +31,16 @@ namespace FinalProject.Rules
             if (screen.ShowDialog() == true)
             {
                 var myArgs = (ReplaceActionArguments)Args;
-                myArgs.Needle = screen.Needle;
-                myArgs.Hammer = screen.Hammer;
+                myArgs.Needle += screen.Needle;
+                myArgs.Hammer += screen.Hammer;
+                
             }
         }
 
-        public string Transform(string origin)
+        private string Transform(string origin)
         {
             var myArgs = (ReplaceActionArguments)Args;
-            string needle = myArgs.Needle;
+            var needle = myArgs.Needle;
             var hammer = myArgs.Hammer;
 
             
