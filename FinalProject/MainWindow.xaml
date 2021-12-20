@@ -100,7 +100,7 @@
                         <DataGrid Name="FileTab" Background="#FFABD1C6" GridLinesVisibility="All" FontWeight="Bold" BorderBrush="#FFABD1C6">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="File Name" Width="150" Binding="{Binding FileName}"/>
-                                <DataGridTextColumn Header="New File Name" Width="150" Binding="{Binding Newfilename}"/>
+                                <DataGridTextColumn Header="New File Name" Width="150" Binding="{Binding FileRename}"/>
                                 <DataGridTextColumn Header="File Path" Width="150" Binding="{Binding FilePath}"/>
                                 <DataGridTextColumn Header="Error" Width="*" Binding="{Binding Erro}"/>
                             </DataGrid.Columns>
