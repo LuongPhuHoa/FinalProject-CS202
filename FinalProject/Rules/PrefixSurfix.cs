@@ -9,12 +9,45 @@ namespace FinalProject.Rules
 {
     public class PrefixSurfix : IStringArgs, INotifyPropertyChanged
     {
-        public string Type { get; set; }
-        public int Choice { get; set; }
-        public string Content { get; set; }
+        private int _choice;
+        private string _type;
+        private string _content;
+        public string Type
+        {
+            get => _type; 
+            set 
+            { 
+                _type = value;
+                NotifyChanged("Type");
+                NotifyChanged("_type");
+                NotifyChanged("Details");
+            }
+        }
+        public int Choice
+        {
+            get => _choice;
+            set
+            {
+                _choice = value;
+                NotifyChanged("Choice");
+                NotifyChanged("_choice");
+                NotifyChanged("Details");
+            }
+        }
+        public string Content
+        {
+            get => _content;
+            set
+            {
+                _content = value;
+                NotifyChanged("Content");
+                NotifyChanged("_content");
+                NotifyChanged("Details");
+            }
+        }
         public string Details => $"Adding {Type} : {Content}";
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyChanged(string newEvent)
         {
             if (PropertyChanged != null)
@@ -25,7 +58,7 @@ namespace FinalProject.Rules
     }
 
 
-    public class PrefixSurfixHandling : IRenameRules
+    class PrefixSurfixHandling : IRenameRules
     {
         public string Name => "Adding prefix/surfix";
 

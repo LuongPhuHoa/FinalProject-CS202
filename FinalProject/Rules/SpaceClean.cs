@@ -13,7 +13,7 @@ namespace FinalProject.Rules
     {
         public string Name => "Cleaning spaces";
 
-        public IStringArgs? Args { get; set; }
+        public IStringArgs Args { get; set; }
 
         public StringProcessor Processor => Transform;
 

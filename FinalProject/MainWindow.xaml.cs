@@ -39,8 +39,8 @@ namespace FinalProject
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             methodList = new ObservableCollection<IRenameRules>() {
-                //new CaseHandling(),
-                //new PrefixSurfixHandling(),
+                new CaseHandling(),
+                new PrefixSurfixHandling(),
                 new ReplaceAction(),
                 new SpaceClean(),
             };

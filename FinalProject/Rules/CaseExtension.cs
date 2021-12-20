@@ -10,12 +10,36 @@ namespace FinalProject.Rules
 {
     public class CaseArgs : IStringArgs, INotifyPropertyChanged
     {
-        public int Choice { get; set; }
-        public string CaseType { get; set; }
+        private int _choice;
+        private string _caseType;
+
+        public int Choice
+        {
+            get => _choice; 
+            set 
+            { 
+                _choice = value;
+                NotifyChanged("Choice");
+                NotifyChanged("_choice");
+                NotifyChanged("Details");
+            }
+        }
+        public string CaseType
+        {
+            get => _caseType; 
+            set 
+            { 
+                _caseType = value;
+                NotifyChanged("CaseType");
+                NotifyChanged("_caseType");
+                NotifyChanged("Details");
+            }
+
+        }
 
         public string Details => $"Casing filename to {CaseType}";
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyChanged(string newEvent)
         {
@@ -26,7 +50,7 @@ namespace FinalProject.Rules
         }
     }
 
-    public class CaseHandling : IRenameRules
+    class CaseHandling : IRenameRules
     {
         public string Name => "Case Handling";
         public StringProcessor Processor => Transform;
