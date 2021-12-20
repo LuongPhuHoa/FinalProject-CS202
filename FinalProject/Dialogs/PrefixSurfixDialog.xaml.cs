@@ -32,7 +32,6 @@ namespace FinalProject
             content = arg.Content;
             if (current == "prefix") prefixBtn.IsChecked = true;
             else if (current == "surfix") surfixBtn.IsChecked = true;
-            contentBox.Text = arg.Content;
             
         }
 
@@ -42,12 +41,14 @@ namespace FinalProject
             {
                 current = "prefix";
                 choice = 0;
+                content = contentBox.Text;
                 this.DialogResult = true;
             }
             else if (surfixBtn.IsChecked == true)
             {
                 current = "surfix";
                 choice = 1;
+                content = contentBox.Text;
                 this.DialogResult = true;
             }
             else
