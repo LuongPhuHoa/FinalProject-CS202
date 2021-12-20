@@ -7,35 +7,33 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Rules
 {
-    public class PrefixSurfix : StringArgs, INotifyPropertyChanged
+    public class PrefixSurfix : IStringArgs, INotifyPropertyChanged
     {
         public string Type { get; set; }
         public int Choice { get; set; }
         public string Content { get; set; }
+        public string Details => $"Adding {Type} : {Content}";
 
-        private void NotifyChange(string newEvent)
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void NotifyChanged(string newEvent)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
             }
         }
-
-        public string Details => $"Adding {Type} : {Content}";
-
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 
 
     public class PrefixSurfixHandling : IRenameRules
     {
-        public string name => "Adding prefix/surfix";
+        public string Name => "Adding prefix/surfix";
 
-        public StringArgs Args { get; set; }
+        public IStringArgs Args { get; set; }
 
         public StringProcessor Processor => Transform;
 
-        private string Transform(string origin)
+        public string Transform(string origin)
         {
             var option = (PrefixSurfix)Args;
             var content = option.Content;

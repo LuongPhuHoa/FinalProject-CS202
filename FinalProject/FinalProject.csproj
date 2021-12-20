@@ -12,11 +12,23 @@
     <None Remove="Images\add %281%29.png" />
     <None Remove="Images\add-folder.png" />
     <None Remove="Images\Add.png" />
+    <None Remove="Images\Add_method_icon.png" />
+    <None Remove="Images\Cancel_button.png" />
     <None Remove="Images\check.png" />
     <None Remove="Images\close.png" />
     <None Remove="Images\data.png" />
+    <None Remove="Images\delete-database.png" />
+    <None Remove="Images\delete-document.png" />
+    <None Remove="Images\ExpandChevronDown_16x.png" />
+    <None Remove="Images\ExpandChevronUp_16x.png" />
     <None Remove="Images\file-transfer %281%29.png" />
     <None Remove="Images\file-transfer.png" />
+    <None Remove="Images\GoToBottom_16x.png" />
+    <None Remove="Images\GoToTop_16x.png" />
+    <None Remove="Images\help.png" />
+    <None Remove="Images\Icon.png" />
+    <None Remove="Images\Icon1.png" />
+    <None Remove="Images\iconfinder_Refresh_58683.png" />
     <None Remove="Images\icons8-add-file-64.png" />
     <None Remove="Images\icons8-add-new-16.png" />
     <None Remove="Images\icons8-checkmark-64.png" />
@@ -28,6 +40,7 @@
     <None Remove="Images\refresh.png" />
     <None Remove="Images\SavePreset.png" />
     <None Remove="Images\start.png" />
+    <None Remove="Images\Submit_button.png" />
     <None Remove="Images\video-play.png" />
   </ItemGroup>
 
@@ -112,9 +125,14 @@
 
   <ItemGroup>
     <Resource Include="Images\add-folder.png" />
-    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\Add_method_icon.png" />
+    <Resource Include="Images\Cancel_button.png" />
     <Resource Include="Images\data.png" />
-    <Resource Include="Images\start.png" />
+    <Resource Include="Images\delete-database.png" />
+    <Resource Include="Images\delete-document.png" />
+    <Resource Include="Images\Icon.png" />
+    <Resource Include="Images\Icon1.png" />
+    <Resource Include="Images\Submit_button.png" />
   </ItemGroup>
 
 </Project>

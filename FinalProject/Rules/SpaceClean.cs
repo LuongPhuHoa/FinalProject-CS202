@@ -11,13 +11,13 @@ namespace FinalProject.Rules
 {
     public class SpaceClean : IRenameRules
     {
-        public string name => "Cleaning spaces";
+        public string Name => "Cleaning spaces";
 
-        public StringArgs? Args { get; set; }
+        public IStringArgs? Args { get; set; }
 
-        public StringProcessor Processor => _transform;
+        public StringProcessor Processor => Transform;
 
-        private string _transform(string origin)
+        public string Transform(string origin)
         {
             string result = Regex.Replace(origin, @"\s", "");
             return result;

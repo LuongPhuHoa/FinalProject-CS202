@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Rules
 {
-    public class CaseArgs : StringArgs, INotifyPropertyChanged
+    public class CaseArgs : IStringArgs, INotifyPropertyChanged
     {
         public int Choice { get; set; }
         public string CaseType { get; set; }
@@ -28,9 +28,9 @@ namespace FinalProject.Rules
 
     public class CaseHandling : IRenameRules
     {
-        public string name => "Case Handling";
+        public string Name => "Case Handling";
         public StringProcessor Processor => Transform;
-        public StringArgs Args { get; set; }
+        public IStringArgs Args { get; set; }
         public IRenameRules Clone()
         {
             return new CaseHandling()

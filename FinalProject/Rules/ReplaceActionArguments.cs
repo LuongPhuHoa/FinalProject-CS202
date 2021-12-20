@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Rules
 {
-    public class ReplaceActionArguments : StringArgs, INotifyPropertyChanged
+    public class ReplaceActionArguments : IStringArgs, INotifyPropertyChanged
     {
         public string Needle { get; set; }
 

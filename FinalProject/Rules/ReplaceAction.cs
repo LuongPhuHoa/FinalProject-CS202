@@ -11,11 +11,11 @@ namespace FinalProject.Rules
 {
     public class ReplaceAction : IRenameRules
     {
-        public string name => "Replace action";
+        public string Name => "Replace action";
 
-        public StringProcessor Processor => Transfer;
+        public StringProcessor Processor => Transform;
 
-        public StringArgs Args { get; set; }
+        public IStringArgs Args { get; set; }
 
         public IRenameRules Clone()
         {
@@ -37,7 +37,7 @@ namespace FinalProject.Rules
             }
         }
 
-        public string Transfer(string origin)
+        public string Transform(string origin)
         {
             var myArgs = (ReplaceActionArguments)Args;
             string needle = myArgs.Needle;
