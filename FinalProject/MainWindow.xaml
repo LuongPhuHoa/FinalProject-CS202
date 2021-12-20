@@ -17,67 +17,45 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <ToolBarTray Background="#FF004643">
-                <ToolBar Margin="0,0,10,0" Background="#FF004643" Foreground="#FF004643">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="StartBatchButton" Click="StartBatchButtonButton_Click">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Image Source="Images/start.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" ></TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+                <ToolBar Background="#FF004643" Foreground="#FF004643" Height="30" HorizontalAlignment="Left" Width="529">
+                    <!--<StackPanel Orientation="Horizontal">-->
+                    <Button Style="{StaticResource MyButton}" Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="StartBatchButton" Click="StartBatchButtonButton_Click">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Image Source="/Images/start.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <!--</StackPanel>-->
+
+                    <!--<StackPanel Orientation="Horizontal">-->
+                    <Label Content="Method: " FontWeight="Bold" Foreground="White"/>
+                    <ComboBox Width="125" x:Name="actionCombobox" Height="20">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Style="{StaticResource MyButton}" Margin="5,0,7,0" x:Name="AddMethodButton" Click="AddMethodButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/Add_method_icon.png" Height="20" Width="20"/>
+                            <TextBlock Text="  Add method" Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MyButton}" Margin="0,0,7,0" x:Name="DeleteButotn" Click="DeleteButotn_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/delete-database.png" Margin="0 0 3 2"/>
+                            <Image Source="/Images/delete-document.png" Margin="0 1 0 2"/>
+                            <TextBlock Text="  Clear " Margin="1 3 0 0" Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                    <!--</StackPanel>-->
                 </ToolBar>
 
-                <ToolBar x:Name="MethodBar" Height="30" Background="#FF004643" Margin="0,0,10,0" Foreground="#FF004643">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Method: " FontWeight="Bold" Foreground="White"/>
-                        <ComboBox Width="125" x:Name="actionCombobox" Height="20">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding name}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <Button  Margin="5,0,7,0" x:Name="AddMethodButton" Click="AddMethodButton_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Images/icons8-add-file-64.png" Height="20" Width="20"/>
-                                <TextBlock Text="  Add method" Foreground="Black"/>
-                            </StackPanel>
-                        </Button>
-                        <Button Margin="0,0,7,0" x:Name="DeleteButton" Click="DeleteButton_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Images/icons8-delete-database-48.png" Margin="0 0 3 2"/>
-                                <Image Source="/Images/icons8-delete-document-64.png" Margin="0 1 0 2"/>
-                                <TextBlock Text="  Clear " Margin="1 3 0 0" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </ToolBar>
-
-                <ToolBar Name="PresetBar" Background="#FF004643" Foreground="White">
-                    <StackPanel Orientation="Horizontal" Height="25">
-                        <Button  Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            </StackPanel>
-                        </Button>
-                        <Button  Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            </StackPanel>
-                        </Button>
-                        <Button  Name="ChoosePreset" Margin="5,0,5,0">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Presets: " FontWeight="Bold"/>
-                                <ComboBox Name="PresetCombobox" Width="100" Margin="0 2 0 2 ">
-                                </ComboBox>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </ToolBar>
             </ToolBarTray>
 
         </StackPanel>
+        
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0*"/>
@@ -92,9 +70,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel Height="40">
-                            <TextBlock Text="{Binding name}" FontFamily="Comic Sans MS" FontSize="15"/>
-                            <TextBlock Text=": " FontFamily="Comic Sans MS" FontSize="15"/>
-                            <TextBlock Text="{Binding Args.Details}" FontFamily="Comic Sans MS" FontSize="15"/>
+                            <TextBlock Text="{Binding name}"  FontSize="15"/>
+                            <TextBlock Text=": " FontSize="15"/>
+                            <TextBlock Text="{Binding Args.Details}" FontSize="15"/>
                         </WrapPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -110,10 +88,10 @@
                         <ToolBarTray Background="#FF004643">
                             <ToolBar Background="Transparent">
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="AddFileButtons"  Margin="5 0 5 0" Click="AddFileButtons_Click">
+                                    <Button x:Name="AddFileButtons" Style="{StaticResource MyButton}"  Margin="5 0 5 0" Click="AddFileButtons_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <Image Source="/Images/Add.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
-                                            <TextBlock Text="Add" />
+                                            <TextBlock Text="Add" Foreground="White" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
@@ -139,10 +117,10 @@
                         <ToolBarTray Background="#FF004643">
                             <ToolBar Background="Transparent">
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="AddFolderButtons" Margin="5 0 5 0" Click="AddFolderButtons_Click">
+                                    <Button x:Name="AddFolderButtons" Style="{StaticResource MyButton}" Margin="5 0 5 0" Click="AddFolderButtons_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <Image Source="/Images/add-folder.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 2 0"/>
-                                            <TextBlock Text="Add" />
+                                            <TextBlock Text="Add" Foreground="White" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
