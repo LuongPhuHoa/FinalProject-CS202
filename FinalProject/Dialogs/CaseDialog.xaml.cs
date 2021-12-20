@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,31 +21,39 @@ namespace FinalProject
     /// </summary>
     public partial class CaseDialog : Window
     {
-        public string currentCase;
+        public string CaseType;
+        public int Choice;
+
         public CaseDialog(CaseArgs args)
         {
             InitializeComponent();
-            currentCase = args.CaseType;
-            if (currentCase == "upper") upperBtn.IsChecked = true;
-            else if (currentCase == "lower") lowerBtn.IsChecked = true;
+
+            if (CaseType == "upper") upperBtn.IsChecked = true;
+            else if (CaseType == "lower") lowerBtn.IsChecked = true;
             else pascalBtn.IsChecked = true;
 
+            CaseType = args.CaseType;   
+            Choice = args.Choice;
         }
+     
         private void submit_Click(object sender, RoutedEventArgs e)
         {
             if (upperBtn.IsChecked == true)
             {
-                currentCase = "upper";
+                CaseType = "upper";
+                Choice = 0;
                 this.DialogResult = true;
             }
             else if (lowerBtn.IsChecked == true)
             {
-                currentCase = "lower";
+                CaseType = "lower";
+                Choice = 1;
                 this.DialogResult = true;
             }
             else if (pascalBtn.IsChecked == true)
             {
-                currentCase = "pascal";
+                CaseType = "pascal";
+                Choice = 2;
                 this.DialogResult = true;
             }
             else

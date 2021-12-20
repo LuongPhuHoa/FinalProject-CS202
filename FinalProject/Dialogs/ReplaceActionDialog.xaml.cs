@@ -22,6 +22,7 @@ namespace FinalProject
     {
         public string Needle;
         public string Hammer;
+
         public ReplaceActionDialog(ReplaceActionArguments args)
         {
             InitializeComponent();

@@ -22,6 +22,7 @@ namespace FinalProject
     {
         public string current;
         public string content;
+        public int choice;
 
         public PrefixSurfixDialog(PrefixSurfix arg)
         {
@@ -32,28 +33,29 @@ namespace FinalProject
             contentBox.Text = arg.Content;
         }
 
-        private void submit_Click(object sender, RoutedEventArgs e)
+        private void Submit_Click(object sender, RoutedEventArgs e)
         {
             if (prefixBtn.IsChecked == true)
             {
                 current = "prefix";
-                
+                choice = 0;
                 this.DialogResult = true;
             }
             else if (surfixBtn.IsChecked == true)
             {
                 current = "surfix";
+                choice = 1;
                 this.DialogResult = true;
             }
             else
             {
+                choice = 2;
                 MessageBox.Show("Chose your option!");
             }
             Content = contentBox.Text;
-            this.DialogResult = true;
         }
 
-        private void cancel_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

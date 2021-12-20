@@ -28,17 +28,28 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<FolderClass> folderList = null;
-        ObservableCollection<FileClass> fileList = null;
-        ObservableCollection<IRenameRules> methodList = null;
+        ObservableCollection<FolderClass> folderList;
+        ObservableCollection<FileClass> fileList;
+        ObservableCollection<IRenameRules> methodList;
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            methodList = new ObservableCollection<IRenameRules>() {
+                //new CaseHandling(),
+                //new PrefixSurfixHandling(),
+                new ReplaceAction(),
+                new SpaceClean(),
+            };
+            actionCombobox.ItemsSource = methodList;
+        }
+
         private void AddFolderButtons_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog openFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog openFolderDialog = new();
             if (openFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
@@ -56,7 +67,7 @@ namespace FinalProject
 
         private void AddFileButtons_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog openFileDialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog openFileDialog = new();
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string[] path = Directory.GetFiles(openFileDialog.SelectedPath);
@@ -73,7 +84,7 @@ namespace FinalProject
 
         private void EditButtonClicked(object sender, RoutedEventArgs e)
         {
-            var method = ActionListBox.SelectedItem as IRenameRules;
+            var method = (IRenameRules)ActionListBox.SelectedItem;
             method.ShowEditDialog();
         }
 
@@ -98,6 +109,21 @@ namespace FinalProject
         private void SavePreset_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        
+
+        private void AddMethodButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (actionCombobox.SelectedItem == null)
+            {
+                MessageBox.Show("No method selected to add ?");
+                return;
+            }
+            var methodSelected = (IRenameRules)actionCombobox.SelectedItem;
+            var instance = methodSelected.Clone();
+
+            ActionListBox.Items.Add(instance);
         }
 
         private void StartBatchButtonButton_Click(object sender, RoutedEventArgs e)
@@ -131,7 +157,7 @@ namespace FinalProject
                 foreach (IRenameRules rule in actionCombobox.Items)
                 {
                     result = rule.Processor.Invoke(result);
-                    ObservableCollection<FileClass> temp = new ObservableCollection<FileClass>(fileList);
+                    ObservableCollection<FileClass> temp = new(fileList);
                     temp.Remove(temp[i]);
                     fileList[i].FileRename = result;
                     foreach (FileClass file in temp)
@@ -152,30 +178,6 @@ namespace FinalProject
                     }
                 }
             }
-        }
-
-        private void AddMethodButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (actionCombobox.SelectedItem == null)
-            {
-                MessageBox.Show("No method selected to add ?");
-                return;
-            }
-            var methodSelected = actionCombobox.SelectedItem as IRenameRules;
-            var instance = methodSelected.Clone();
-
-            ActionListBox.Items.Add(instance);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            methodList = new ObservableCollection<IRenameRules>() {
-                new CaseHandling(),
-                new PrefixSurfixHandling(),
-                new ReplaceAction(),
-                new SpaceClean(),
-            };
-            actionCombobox.ItemsSource = methodList;
         }
     }
 }

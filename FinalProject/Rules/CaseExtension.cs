@@ -10,35 +10,14 @@ namespace FinalProject.Rules
 {
     public class CaseArgs : StringArgs, INotifyPropertyChanged
     {
-        private string _caseType; //  upper, lower , pascal 
+        public int Choice { get; set; }
+        public string CaseType { get; set; }
+
+        public string Details => $"Casing filename to {CaseType}";
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public string Details => $"Casing filename to {_caseType}";
-
-        public string ParseArgs()
-        {
-            return _caseType;
-        }
-        public int GetCaseType()
-        {
-            if (_caseType == "upper")
-                return 1;
-            else if (_caseType == "lower")
-                return 2;
-            return 3;
-        }
-        public string CaseType
-        {
-            get => _caseType; set
-            {
-                _caseType = value;
-                NotifyChange("CaseType");
-                NotifyChange("Details");
-            }
-        }
-
-        private void NotifyChange(string newEvent)
+        public void NotifyChanged(string newEvent)
         {
             if (PropertyChanged != null)
             {
@@ -50,17 +29,36 @@ namespace FinalProject.Rules
     public class CaseHandling : IRenameRules
     {
         public string name => "Case Handling";
-
-        public StringArgs? Args { get; set; }
-        private string _transform(string origin)
+        public StringProcessor Processor => Transform;
+        public StringArgs Args { get; set; }
+        public IRenameRules Clone()
         {
-            var caseArgs = Args as CaseArgs;
-            int _caseType = caseArgs.GetCaseType();
-            if (_caseType == 1)
+            return new CaseHandling()
+            {
+                Args = new CaseArgs()
+            };
+        }
+
+        public void ShowEditDialog()
+        {
+            var screen = new CaseDialog((CaseArgs)Args);
+            if (screen.ShowDialog() == true)
+            {
+                var caseArgs = (CaseArgs)Args;
+                caseArgs.CaseType = screen.CaseType;
+                caseArgs.Choice = screen.Choice;
+            }
+        }
+
+        public string Transform(string origin)
+        {
+            var caseArgs = (CaseArgs)Args;
+            var _caseType = caseArgs.Choice;
+            if (_caseType == 0)
             {
                 return origin.ToUpper();
             }
-            else if (_caseType == 2)
+            else if (_caseType == 1)
             {
                 return origin.ToLower();
 
@@ -74,25 +72,6 @@ namespace FinalProject.Rules
             }
         }
 
-        StringProcessor IRenameRules.Processor => _transform;
-
-        public IRenameRules Clone()
-        {
-            return new CaseHandling()
-            {
-                Args = new CaseArgs()
-            };
-        }
-
-        public void ShowEditDialog()
-        {
-            var screen = new CaseDialog(Args as CaseArgs);
-            if (screen.ShowDialog() == true)
-            {
-                var caseArgs = Args as CaseArgs;
-
-                caseArgs.CaseType = screen.currentCase;
-            }
-        }
+        
     }
 }

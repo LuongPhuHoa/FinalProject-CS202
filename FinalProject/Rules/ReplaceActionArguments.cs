@@ -10,28 +10,9 @@ namespace FinalProject.Rules
 {
     public class ReplaceActionArguments : StringArgs, INotifyPropertyChanged
     {
-        public string _needle;
-        public string _hammer;
+        public string Needle { get; set; }
 
-        public string Needle
-        {
-            get => _needle; set
-            {
-                _needle = value;
-                NotifyChanged("Needle");
-                NotifyChanged("Details");
-            }
-        }
-
-        public string Hammer
-        {
-            get => _hammer; set
-            {
-                _hammer = value;
-                NotifyChanged("Hammer");
-                NotifyChanged("Details");
-            }
-        }
+        public string Hammer { get; set; }  
 
         public string Details => $"Replace {Needle} with {Hammer}";
 
@@ -41,11 +22,6 @@ namespace FinalProject.Rules
             {
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        public string ParseArgs()
-        {
-            throw new NotImplementedException();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

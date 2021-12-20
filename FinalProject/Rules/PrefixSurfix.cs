@@ -9,30 +9,9 @@ namespace FinalProject.Rules
 {
     public class PrefixSurfix : StringArgs, INotifyPropertyChanged
     {
-        public string _type; //prefix, surfix
-        public string _content;
-
-        public string Type
-        {
-            get => _type; set
-            {
-                _type = value;
-                NotifyChange("Type");
-                NotifyChange("Details");
-            }
-        }
-
-        public string Content
-        {
-            get => _content;
-
-            set
-            {
-                Content = value;
-                NotifyChange("Content");
-                NotifyChange("Details");
-            }
-        }
+        public string Type { get; set; }
+        public int Choice { get; set; }
+        public string Content { get; set; }
 
         private void NotifyChange(string newEvent)
         {
@@ -45,33 +24,22 @@ namespace FinalProject.Rules
         public string Details => $"Adding {Type} : {Content}";
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
-        public string ParseArgs()
-        {
-            return _type;
-        }
-        public int GetType()
-        {
-            if (_type == "prefix")
-                return 1;
-            else if (_type == "surfix")
-                return 2;
-            return 3;
-        }
     }
+
+
     public class PrefixSurfixHandling : IRenameRules
     {
         public string name => "Adding prefix/surfix";
 
-        public StringArgs? Args { get; set; }
+        public StringArgs Args { get; set; }
 
-        public StringProcessor Processor => _transform;
+        public StringProcessor Processor => Transform;
 
-        private string _transform(string origin)
+        private string Transform(string origin)
         {
-            var option = Args as PrefixSurfix;
+            var option = (PrefixSurfix)Args;
             var content = option.Content;
-            int _caseType = option.GetType();
+            int _caseType = option.Choice;
             string result = "";
             if (_caseType == 1)
             {
@@ -96,12 +64,13 @@ namespace FinalProject.Rules
 
         public void ShowEditDialog()
         {
-            var screen = new PrefixSurfixDialog(Args as PrefixSurfix);
+            var screen = new PrefixSurfixDialog((PrefixSurfix)Args);
             if (screen.ShowDialog() == true)
             {
-                var caseArgs = Args as PrefixSurfix;
+                var caseArgs = (PrefixSurfix)Args;
                 caseArgs.Content = screen.content;
                 caseArgs.Type = screen.current;
+                caseArgs.Choice = screen.choice;
             }
         }
     }
