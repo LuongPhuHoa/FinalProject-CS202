@@ -154,7 +154,7 @@ namespace FinalProject
                     if (result == " ")
                     {
                         // a space mean there was an error when executed this method 
-                        fileList[i].FileError = "Error.";
+                        fileList[i].FileError = "Renaming file failed";
                         break;
 
                     }
@@ -163,10 +163,16 @@ namespace FinalProject
                 if (fileList[i].FileError != "Duplicate File Name.")
                 {
                     fileList[i].FileRename = result;
-                    fileList[i].FileError = "Ok.";
+                    fileList[i].FileError = "No Error.";
                 }
-                string tempPath = fileList[i].FilePath.Replace(fileList[i].FileName, fileList[i].FileRename);
-                File.Move(@fileList[i].FilePath, tempPath);
+                if(fileList[i].FileError== "No Error.")
+                {
+                    string tempPath = fileList[i].FilePath.Replace(fileList[i].FileName, fileList[i].FileRename);
+                    if (fileList[i].FilePath != tempPath)
+                    {
+                        File.Move(@fileList[i].FilePath, tempPath);
+                    }
+                }
             }
             
 
@@ -192,7 +198,7 @@ namespace FinalProject
                     if (result == " ")
                     {
                         // a space mean there was an error when executed this method 
-                        folderList[i].FolderError = "Error.";
+                        folderList[i].FolderError = "Renaming folder failed";
                         break;
 
                     }
@@ -201,10 +207,16 @@ namespace FinalProject
                 if (folderList[i].FolderError != "Duplicate Folder Name.")
                 {
                     folderList[i].FolderRename = result;
-                    folderList[i].FolderError = "Ok.";
+                    folderList[i].FolderError = "No Error.";
                 }
-                string tempPath = folderList[i].FolderPath.Replace(folderList[i].FolderName, folderList[i].FolderRename);
-                Directory.Move(@folderList[i].FolderPath, tempPath);
+                if(folderList[i].FolderError== "No Error.")
+                {
+                    string tempPath = folderList[i].FolderPath.Replace(folderList[i].FolderName, folderList[i].FolderRename);
+                    if (folderList[i].FolderPath != tempPath)
+                    {
+                        Directory.Move(@folderList[i].FolderPath, tempPath);
+                    }
+                }
             }
         }
     }
