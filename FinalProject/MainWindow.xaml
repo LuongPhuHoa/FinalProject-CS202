@@ -129,9 +129,9 @@
                         <DataGrid Name="FolderTab" Background="Transparent" GridLinesVisibility="All" FontWeight="Bold">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Folder Name" Width="150" Binding="{Binding FolderName}"/>
-                                <DataGridTextColumn Header="New Folder Name" Width="150" Binding="{Binding Newfolder}"/>
+                                <DataGridTextColumn Header="New Folder Name" Width="150" Binding="{Binding FolderRename}"/>
                                 <DataGridTextColumn Header="Folder Path" Width="150" Binding="{Binding FolderPath}"/>
-                                <DataGridTextColumn Header="Error" Width="*" Binding="{Binding Erro}"/>
+                                <DataGridTextColumn Header="Error" Width="*" Binding="{Binding FolderError}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

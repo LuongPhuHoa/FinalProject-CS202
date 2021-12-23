@@ -142,23 +142,64 @@ namespace FinalProject
                     result = rule.Processor.Invoke(result);
                     ObservableCollection<FileClass> temp = new(fileList);
                     temp.Remove(temp[i]);
-                    fileList[i].FileRename = result;
-                    foreach (FileClass file in temp)
+                    foreach (FileClass f in temp)
                     {
-                        if (result == file.FileName)
+                        if (result == f.FileName)
                         {
-                            fileList[i].FileError = "Dupplicate file name!";
+                            fileList[i].FileError = "Duplicate File Name.";
+                            fileList[i].FileRename = result;
+
                         }
                     }
                     if (result == " ")
                     {
+                        // a space mean there was an error when executed this method 
                         fileList[i].FileError = "Error.";
                         break;
+
                     }
-                    else if (fileList[i].FileError != "Duplicate file name!" && fileList[i].FileError != "Error"!)
+                }
+                // all done without error?
+                if (fileList[i].FileError != "Duplicate File Name.")
+                {
+                    fileList[i].FileRename = result;
+                    fileList[i].FileError = "Ok.";
+                }
+            }
+            
+
+            // batching folder
+            for (int i = 0; i < folderList.Count; i++)
+            {
+                string result = folderList[i].FolderName;
+                string path = folderList[i].FolderPath;
+                foreach (IRenameRules rule in ActionListBox.Items)
+                {
+                    result = rule.Processor.Invoke(result);
+                    ObservableCollection<FolderClass> temp = new(folderList);
+                    temp.Remove(temp[i]);
+                    foreach (FolderClass f in temp)
                     {
-                        fileList[i].FileError = "Ok.";
+                        if (result == f.FolderName)
+                        {
+                            folderList[i].FolderError = "Duplicate Folder Name.";
+                            folderList[i].FolderRename = result;
+
+                        }
                     }
+                    if (result == " ")
+                    {
+                        // a space mean there was an error when executed this method 
+                        folderList[i].FolderError = "Error.";
+                        break;
+
+                    }
+                }
+                // all done without error?
+                if (folderList[i].FolderError != "Duplicate Folder Name.")
+                {
+                    folderList[i].FolderRename = result;
+                    folderList[i].FolderError = "Ok.";
                 }
             }
         }
