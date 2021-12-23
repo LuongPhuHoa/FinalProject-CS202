@@ -52,7 +52,6 @@ namespace FinalProject
             System.Windows.Forms.FolderBrowserDialog openFolderDialog = new();
             if (openFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
                 string[] path = Directory.GetDirectories(openFolderDialog.SelectedPath);
                 foreach (var dir in path)
                 {
@@ -67,16 +66,16 @@ namespace FinalProject
 
         private void AddFileButtons_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog openFileDialog = new();
+            var openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string[] path = Directory.GetFiles(openFileDialog.SelectedPath);
-                foreach (string item in path)
+                foreach (var file in openFileDialog.FileNames)
                 {
                     FileTab.Items.Add(new FileClass()
                     {
-                        FileName = Path.GetFileName(item),
-                        FilePath = item
+                        FileName = System.IO.Path.GetFileName(file),
+                        FilePath = file
                     });
                 }
             }
