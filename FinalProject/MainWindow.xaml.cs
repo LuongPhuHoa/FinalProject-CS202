@@ -50,14 +50,15 @@ namespace FinalProject
         private void AddFolderButtons_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog openFolderDialog = new();
+
             if (openFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string[] path = Directory.GetDirectories(openFolderDialog.SelectedPath);
+                string[] path = Directory.GetDirectories(openFolderDialog.SelectedPath, "*", System.IO.SearchOption.AllDirectories);
                 foreach (var dir in path)
                 {
                     FolderTab.Items.Add(new FolderClass()
                     {
-                        FolderName = new DirectoryInfo(dir).Name,
+                        FolderName = dir.Substring(openFolderDialog.SelectedPath.Length + 1),
                         FolderPath = dir
                     });
                 }
@@ -164,6 +165,8 @@ namespace FinalProject
                     fileList[i].FileRename = result;
                     fileList[i].FileError = "Ok.";
                 }
+                string tempPath = fileList[i].FilePath.Replace(fileList[i].FileName, fileList[i].FileRename);
+                File.Move(@fileList[i].FilePath, tempPath);
             }
             
 
@@ -200,6 +203,8 @@ namespace FinalProject
                     folderList[i].FolderRename = result;
                     folderList[i].FolderError = "Ok.";
                 }
+                string tempPath = folderList[i].FolderPath.Replace(folderList[i].FolderName, folderList[i].FolderRename);
+                Directory.Move(@folderList[i].FolderPath, tempPath);
             }
         }
     }
