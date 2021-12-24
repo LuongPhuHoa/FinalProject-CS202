@@ -27,6 +27,7 @@ namespace FinalProject.Rules
         static public int FileCount = MainWindow.fileCount;
         public string Transform(string origin)
         {
+            FileCount++;
             int dotIndex = origin.LastIndexOf(".");
             string ext = origin.Substring(dotIndex);
             string name = origin.Substring(0, dotIndex);
