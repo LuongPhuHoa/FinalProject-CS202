@@ -71,6 +71,9 @@ namespace FinalProject.Rules
             var option = (PrefixSurfix)Args;
             var content = option.Content;
             int _caseType = option.Choice;
+            int dotIndex = origin.LastIndexOf(".");
+            string ext = origin.Substring(dotIndex);
+            string name = origin.Substring(0, dotIndex);
             string result = "";
             if (_caseType == 0)
             {
@@ -79,7 +82,7 @@ namespace FinalProject.Rules
             }
             else if (_caseType == 1)
             {
-                result = result + origin + content;
+                result = result + name + content + ext;
                 return result;
             }
             else return origin;
