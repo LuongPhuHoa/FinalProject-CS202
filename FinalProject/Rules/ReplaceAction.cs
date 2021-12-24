@@ -33,7 +33,6 @@ namespace FinalProject.Rules
                 var myArgs = (ReplaceActionArguments)Args;
                 myArgs.Needle += screen.Needle;
                 myArgs.Hammer += screen.Hammer;
-                
             }
         }
 

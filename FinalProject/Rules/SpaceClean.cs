@@ -19,7 +19,10 @@ namespace FinalProject.Rules
 
         public string Transform(string origin)
         {
-            string result = Regex.Replace(origin, @"\s", "");
+            int dotIndex = origin.LastIndexOf(".");
+            string ext = origin.Substring(dotIndex);
+            string name = origin.Substring(0, dotIndex);
+            string result = Regex.Replace(name, @"\s", "") + ext;
             return result;
         }
         public IRenameRules Clone()
