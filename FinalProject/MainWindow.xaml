@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
         Title="Batch Rename" Height="500" Width="1000" 
-        Icon="/Images/data.png" Background="#FFABD1C6" Loaded="Window_Loaded">
+        Icon="/Images/Icon1.png" Background="#FFABD1C6" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
