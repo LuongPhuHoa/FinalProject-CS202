@@ -29,8 +29,8 @@
                 <Button Style="{StaticResource MyButton}" Height="50" Width="110" Click="submit_Click" BorderBrush="AliceBlue" BorderThickness="1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/Submit_button.png" Height="30" Width="30" RenderOptions.BitmapScalingMode="HighQuality"/>
-                <TextBlock Text="Submit" FontWeight="Bold" FontSize="20" Margin="5 0 0 0" Width="91"/>
-            </StackPanel>
+                        <TextBlock Text="Submit" FontWeight="Bold" FontSize="20" Margin="5 0 0 0" Width="91"/>
+                    </StackPanel>
                 </Button>
             </Border>
             <Border VerticalAlignment="Stretch" BorderThickness="1"  Margin="70,0,0,0">

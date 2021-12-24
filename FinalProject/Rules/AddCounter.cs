@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Rules
 {
+    class AddCounterArg : IStringArgs
+    {
+        public string Details => "Adding counter in name";
+
+        public string ParseArgs()
+        {
+            return "";
+        }
+    }
     class AddCounter : IRenameRules
     {
         public string Name => "Adding Counter";
@@ -16,7 +25,10 @@ namespace FinalProject.Rules
 
         public IRenameRules Clone()
         {
-            return new AddCounter();
+            return new AddCounter()
+            {
+                Args = new AddCounterArg()
+            };
         }
 
         public void ShowEditDialog()

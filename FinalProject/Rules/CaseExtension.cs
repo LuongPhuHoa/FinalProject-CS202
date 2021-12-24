@@ -48,6 +48,17 @@ namespace FinalProject.Rules
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
             }
         }
+
+        public string ParseArgs()
+        {
+            return CaseType;
+        }
+        public CaseArgs() { }
+        public CaseArgs(string details)
+        {
+            string[] word = details.Split(' ');
+            CaseType = word[2];
+        }
     }
 
     class CaseHandling : IRenameRules

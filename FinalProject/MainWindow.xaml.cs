@@ -20,6 +20,7 @@ using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using FinalProject.Rules;
 using FinalProject.BrowseInit;
+using FinalProject.Dialogs;
 
 namespace FinalProject
 {
@@ -31,6 +32,8 @@ namespace FinalProject
         ObservableCollection<FolderClass> folderList;
         ObservableCollection<FileClass> fileList;
         List<IRenameRules> methodList;
+        ObservableCollection<Preset> presetList;
+        string currentPresetFile = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +49,7 @@ namespace FinalProject
                 new AddCounter(),
             };
             actionCombobox.ItemsSource = methodList;
+            presetList = new ObservableCollection<Preset>();
         }
 
         private void AddFolderButtons_Click(object sender, RoutedEventArgs e)
@@ -221,6 +225,142 @@ namespace FinalProject
                         Directory.Move(@folderList[i].FolderPath, tempPath);
                     }
                 }
+            }
+        }
+        private void SavePreset_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if ActionListBox is empty
+            if(ActionListBox.Items.Count==0)
+            {
+                MessageBox.Show("Nothing to save!");
+                return;
+            }
+            //save method
+            var presetScreen = new PresetDialog();
+            if(presetScreen.ShowDialog()==true)
+            {
+                string presetName = presetScreen.presetName;
+
+                // if presetfile is not null
+                if (currentPresetFile != "")
+                {
+                    using (StreamWriter write = File.AppendText(currentPresetFile))
+                    {
+                        write.WriteLine(presetName);
+                        
+                        foreach(IRenameRules rule in ActionListBox.Items)
+                        {
+                            string temp = $"{rule.Name} {rule.Args.ParseArgs()}";
+                            write.WriteLine(temp);
+                        }
+                        write.WriteLine("//");
+                    }
+                    MessageBox.Show($"Saved! Please check preset file in {currentPresetFile}");
+                }
+                else
+                {
+                    string presetFolderPath = @"C:\BatchRename";
+                    string presetFilePath = @"C:\BatchRename\preset.txt";
+                    if (!Directory.Exists(presetFolderPath)) 
+                        Directory.CreateDirectory(presetFolderPath);
+                    if(File.Exists(presetFilePath))
+                    {
+                        using (StreamWriter write = File.CreateText(presetFilePath))
+                        {
+                            write.WriteLine(presetName);
+
+                            foreach (IRenameRules rule in ActionListBox.Items)
+                            {
+                                string temp = $"{rule.Name} {rule.Args.ParseArgs()}";
+                                write.WriteLine(temp);
+                            }
+                            write.WriteLine("//");
+                        }
+                        MessageBox.Show($"Saved. Please check preset file in {presetFilePath}");
+                    }
+                    else
+                    {
+                        using (StreamWriter write = File.AppendText(presetFilePath))
+                        {
+                            write.WriteLine(presetName);
+
+                            foreach (IRenameRules rule in ActionListBox.Items)
+                            {
+                                string temp = $"{rule.Name} {rule.Args.ParseArgs()}";
+                                write.WriteLine(temp);
+                            }
+                            write.WriteLine("//");
+                        }
+                        MessageBox.Show($"Saved. Please check preset file in {presetFilePath}");
+                    }
+                }
+            }
+        }
+
+        private void LoadPreset_Click(object sender, RoutedEventArgs e)
+        {
+            var loadMethod = new System.Windows.Forms.OpenFileDialog();
+            if (loadMethod.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                presetList = new ObservableCollection<Preset>();
+                //clear listbox if it's not null
+                ActionListBox.Items.Clear();
+                string presetFilePath = loadMethod.FileName;
+
+                //set file path
+                currentPresetFile = presetFilePath;
+                // start reading 
+                using (StreamReader read = new StreamReader(presetFilePath))
+                {
+                    string currentLine;
+                    while ((currentLine = read.ReadLine()) != null)
+                    {
+                        string presetname = currentLine;
+                        ObservableCollection<IRenameRules> temp = new ObservableCollection<IRenameRules>();
+                        while ((currentLine = read.ReadLine()) != "//")
+                        {
+                            if(currentLine.Contains("Adding Counter"))
+                            {
+                                temp.Add(new AddCounter() { Args = new AddCounterArg() });
+                            }
+                            else if (currentLine.Contains("Case Handling"))
+                            {
+                                temp.Add(new CaseHandling() { Args = new CaseArgs(currentLine) });
+                            }
+                            else if (currentLine.Contains("Replace action"))
+                            {
+                                temp.Add(new ReplaceAction() { Args = new ReplaceActionArguments(currentLine) });
+                            }
+                            else if (currentLine.Contains("Cleaning spaces"))
+                            {
+                                temp.Add(new SpaceClean() { Args = new SpaceArg() });
+                            }
+                            else if (currentLine.Contains("Adding prefix/surfix"))
+                            {
+                                temp.Add(new PrefixSurfixHandling() { Args = new PrefixSurfixArg(currentLine) });
+                            }
+                        }
+                        presetList.Add(new Preset()
+                        {
+                            Name = presetname,
+                            presetItems = temp
+                        });
+                    }
+                }
+            }
+            PresetCombobox.ItemsSource = presetList;
+        }
+
+        private void PresetCombobox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (PresetCombobox.SelectedIndex == -1) return;
+            // clear methodListBox
+            ActionListBox.Items.Clear();
+            ActionListBox.ItemsSource = null;
+            object selected = PresetCombobox.SelectedItem;
+            foreach (IRenameRules rule in (selected as Preset).presetItems)
+            {
+                ActionListBox.Items.Add(rule);
             }
         }
     }
