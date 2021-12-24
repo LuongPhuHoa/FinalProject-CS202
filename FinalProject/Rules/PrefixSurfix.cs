@@ -72,12 +72,12 @@ namespace FinalProject.Rules
             var content = option.Content;
             int _caseType = option.Choice;
             string result = "";
-            if (_caseType == 1)
+            if (_caseType == 0)
             {
                 result = result + content + origin;
                 return result;
             }
-            else if (_caseType == 2)
+            else if (_caseType == 1)
             {
                 result = result + origin + content;
                 return result;

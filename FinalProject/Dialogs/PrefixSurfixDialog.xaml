@@ -8,7 +8,7 @@
         Title="Prefix &amp; Surfix Dialog" Height="450" Width="600"
         Icon="/Images/data.png" Background="#FFABD1C6">
     <Canvas>
-        <Label Content="ADDING PREFEX &amp; SURFIX DIALOG" FontSize="32" Grid.Row="0" Foreground="#FFE8E4E6" FontWeight="Bold" Grid.RowSpan="2" Background="#FF004643" Width="600" HorizontalContentAlignment="Center" Canvas.Top="-1"/>
+        <Label Content="ADDING PREFIX &amp; SURFIX DIALOG" FontSize="32" Grid.Row="0" Foreground="#FFE8E4E6" FontWeight="Bold" Grid.RowSpan="2" Background="#FF004643" Width="600" HorizontalContentAlignment="Center" Canvas.Top="-1"/>
         <StackPanel Orientation="Vertical" Canvas.Left="10" Canvas.Top="59" Width="580">
             <TextBlock Text="Options" FontSize="30"
                        Margin="75,20,100,35" Width="115" FontWeight="Bold"/>
