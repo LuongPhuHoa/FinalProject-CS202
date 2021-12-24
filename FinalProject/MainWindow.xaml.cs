@@ -70,7 +70,7 @@ namespace FinalProject
             }
         }
 
-        static public int fileCount;
+        static public int fileCount = 0;
         private void AddFileButtons_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -83,8 +83,7 @@ namespace FinalProject
                     {
                         FileName = System.IO.Path.GetFileName(file),
                         FilePath = file
-                    }); 
-                    fileCount++;
+                    });
                 }
             }
         }
@@ -149,7 +148,6 @@ namespace FinalProject
                     result = rule.Processor.Invoke(result);
                     ObservableCollection<FileClass> temp = new(fileList);
                     temp.Remove(temp[i]);
-                    fileCount = fileCount--;
                     foreach (FileClass f in temp)
                     {
                         if (result == f.FileName)
@@ -181,6 +179,7 @@ namespace FinalProject
                         File.Move(@fileList[i].FilePath, tempPath);
                     }
                 }
+                fileCount = 0;
             }
             
 
@@ -225,6 +224,7 @@ namespace FinalProject
                         Directory.Move(@folderList[i].FolderPath, tempPath);
                     }
                 }
+                fileCount = 0;
             }
         }
         private void SavePreset_Click(object sender, RoutedEventArgs e)

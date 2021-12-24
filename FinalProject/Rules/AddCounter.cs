@@ -36,7 +36,7 @@ namespace FinalProject.Rules
             throw new NotImplementedException();
         }
 
-        static public int FileCount = MainWindow.fileCount;
+        public int FileCount = MainWindow.fileCount;
         public string Transform(string origin)
         {
 
