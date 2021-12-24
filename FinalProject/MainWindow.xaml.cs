@@ -211,9 +211,9 @@ namespace FinalProject
                 if (folderList[i].FolderError != "Duplicate Folder Name.")
                 {
                     folderList[i].FolderRename = result;
-                    folderList[i].FolderError = "No Error.";
+                    folderList[i].FolderError = "Successful.";
                 }
-                if(folderList[i].FolderError== "No Error.")
+                if(folderList[i].FolderError== "Successful.")
                 {
                     string tempPath = folderList[i].FolderPath.Replace(folderList[i].FolderName, folderList[i].FolderRename);
                     if (folderList[i].FolderPath != tempPath)
