@@ -167,9 +167,9 @@ namespace FinalProject
                 if (fileList[i].FileError != "Duplicate File Name.")
                 {
                     fileList[i].FileRename = result;
-                    fileList[i].FileError = "No Error.";
+                    fileList[i].FileError = "Successful";
                 }
-                if(fileList[i].FileError== "No Error.")
+                if(fileList[i].FileError== "Successful")
                 {
                     string tempPath = fileList[i].FilePath.Replace(fileList[i].FileName, fileList[i].FileRename);
                     if (fileList[i].FilePath != tempPath)
