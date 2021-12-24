@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Rules
 {
-    public class PrefixSurfix : IStringArgs, INotifyPropertyChanged
+    public class PrefixSurfixArg: IStringArgs, INotifyPropertyChanged
     {
         private int _choice;
         private string _type;
@@ -47,7 +47,13 @@ namespace FinalProject.Rules
         }
         public string Details => $"Adding {Type} : {Content}";
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public string ParseArgs()
+        {
+            return $"{Type} {Content}";
+        }
+
         private void NotifyChanged(string newEvent)
         {
             if (PropertyChanged != null)
@@ -55,10 +61,17 @@ namespace FinalProject.Rules
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(newEvent));
             }
         }
+        public PrefixSurfixArg() { }
+        public PrefixSurfixArg(string details)
+        {
+            string[] word = details.Split(' ');
+            Type = word[2];
+            Content = word[3];
+        }
     }
 
 
-    class PrefixSurfixHandling : IRenameRules
+    public class PrefixSurfixHandling : IRenameRules
     {
         public string Name => "Adding prefix/surfix";
 
@@ -68,7 +81,7 @@ namespace FinalProject.Rules
 
         public string Transform(string origin)
         {
-            var option = (PrefixSurfix)Args;
+            var option = (PrefixSurfixArg)Args;
             var content = option.Content;
             int _caseType = option.Choice;
             int dotIndex = origin.LastIndexOf(".");
@@ -92,16 +105,16 @@ namespace FinalProject.Rules
         {
             return new PrefixSurfixHandling()
             {
-                Args = new PrefixSurfix()
+                Args = new PrefixSurfixArg()
             };
         }
 
         public void ShowEditDialog()
         {
-            var screen = new PrefixSurfixDialog((PrefixSurfix)Args);
+            var screen = new PrefixSurfixDialog((PrefixSurfixArg)Args);
             if (screen.ShowDialog() == true)
             {
-                var caseArgs = (PrefixSurfix)Args;
+                var caseArgs = (PrefixSurfixArg)Args;
                 caseArgs.Content = screen.content;
                 caseArgs.Type = screen.current;
                 caseArgs.Choice = screen.choice;

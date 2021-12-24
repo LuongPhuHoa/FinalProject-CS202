@@ -24,7 +24,7 @@ namespace FinalProject
         public string content;
         public int choice;
 
-        public PrefixSurfixDialog(PrefixSurfix arg)
+        public PrefixSurfixDialog(PrefixSurfixArg arg)
         {
             InitializeComponent();
             current = arg.Type;

@@ -132,6 +132,9 @@
     <Resource Include="Images\delete-document.png" />
     <Resource Include="Images\Icon.png" />
     <Resource Include="Images\Icon1.png" />
+    <Resource Include="Images\LoadPreset.png" />
+    <Resource Include="Images\SavePreset.png" />
+    <Resource Include="Images\start.png" />
     <Resource Include="Images\Submit_button.png" />
   </ItemGroup>
 

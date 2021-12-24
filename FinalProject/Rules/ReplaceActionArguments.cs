@@ -35,15 +35,28 @@ namespace FinalProject.Rules
             }
         }
 
-        public string Details => $"Replace {Needle} with {Hammer}";
+        public string Details => $"Replace {Needle} {Hammer}";
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string ParseArgs()
+        {
+            return $"{Needle} {Hammer}";
+        }
+
         private void NotifyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+        public ReplaceActionArguments() { }
+        public ReplaceActionArguments(string details)
+        {
+            string[] word = details.Split(' ');
+            Needle = word[2];
+            Hammer = word[3];
         }
     }
 }

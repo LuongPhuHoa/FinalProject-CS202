@@ -17,15 +17,15 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <ToolBarTray Background="#FF004643">
-                <ToolBar Background="#FF004643" Foreground="#FF004643" Height="30" HorizontalAlignment="Left" Width="529">
-                    <!--<StackPanel Orientation="Horizontal">-->
-                    <Button Style="{StaticResource MyButton}" Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="StartBatchButton" Click="StartBatchButtonButton_Click">
+                <ToolBar Background="#FF004643" Foreground="#FF004643" Height="30" HorizontalAlignment="Left" Width="710">
+                    
+                    <Button Style="{StaticResource MyButton}" Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="StartBatchButton" Click="StartBatchButtonButton_Click">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Image Source="/Images/start.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"></TextBlock>
+                            <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                  
+
                     <Label Content="Method: " FontWeight="Bold" Foreground="White"/>
                     <ComboBox Width="125" x:Name="actionCombobox" Height="20">
                         <ComboBox.ItemTemplate>
@@ -47,33 +47,44 @@
                         </StackPanel>
                     </Button>
 
-                        <Button Style="{StaticResource MyButton}" Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <Button Style="{StaticResource MyButton}" x:Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MyButton}" Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
+
+                        <Button Style="{StaticResource MyButton}" x:Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource MyButton}" Name="ChoosePreset" Margin="5,0,5,0">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Presets: "/>
-                                <ComboBox Name="PresetCombobox" Width="100" Margin="0 2 0 2 ">
 
+                        <Button Style="{StaticResource MyButton}" x:Name="ChoosePreset">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Presets: " FontWeight="Bold" Foreground="White"/>
+                                <ComboBox x:Name="PresetCombobox" Width="100" Margin="0 2 0 2 " DropDownClosed="PresetCombobox_DropDownClosed">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
                                 </ComboBox>
                             </StackPanel>
                         </Button>
-              
-                        
+                    </StackPanel>
                 </ToolBar>
-
             </ToolBarTray>
 
         </StackPanel>
-        
+
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="653*"/>
+                <ColumnDefinition Width="347*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0*"/>
                 <RowDefinition/>
@@ -94,7 +105,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <TabControl Margin="246,0,0,10" Grid.RowSpan="2">
+            <TabControl Margin="246,0,0,10" Grid.RowSpan="2" Grid.ColumnSpan="2">
                 <TabItem Background="#FFF9BC60" BorderBrush="#FFF9BC60">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
