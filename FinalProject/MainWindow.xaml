@@ -18,17 +18,14 @@
         <StackPanel Orientation="Vertical">
             <ToolBarTray Background="#FF004643">
                 <ToolBar Background="#FF004643" Foreground="#FF004643" Height="30" HorizontalAlignment="Left" Width="710">
-                    <!--</StackPanel>-->
-
-                    <!--</StackPanel>-->
-                    <!--<StackPanel Orientation="Horizontal">-->
+                    
                     <Button Style="{StaticResource MyButton}" Height="20" Margin="5,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="StartBatchButton" Click="StartBatchButtonButton_Click">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Image Source="/Images/start.png" Height="16" Width="16" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <!--<StackPanel Orientation="Horizontal">-->
+
                     <Label Content="Method: " FontWeight="Bold" Foreground="White"/>
                     <ComboBox Width="125" x:Name="actionCombobox" Height="20">
                         <ComboBox.ItemTemplate>
@@ -49,17 +46,22 @@
                             <TextBlock Text="  Clear " Margin="1 3 0 0" Foreground="White"/>
                         </StackPanel>
                     </Button>
+
                     <StackPanel Orientation="Horizontal" Height="25">
                         <Button Style="{StaticResource MyButton}" x:Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
+
                         <Button Style="{StaticResource MyButton}" x:Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </StackPanel>
                         </Button>
+
                         <Button Style="{StaticResource MyButton}" x:Name="ChoosePreset">
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Presets: " FontWeight="Bold" Foreground="White"/>
