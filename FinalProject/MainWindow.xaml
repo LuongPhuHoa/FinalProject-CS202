@@ -25,9 +25,7 @@
                             <TextBlock Text=" START BATCH" FontSize="12" FontWeight="Bold" Foreground="White"></TextBlock>
                         </StackPanel>
                     </Button>
-                    <!--</StackPanel>-->
-
-                    <!--<StackPanel Orientation="Horizontal">-->
+                  
                     <Label Content="Method: " FontWeight="Bold" Foreground="White"/>
                     <ComboBox Width="125" x:Name="actionCombobox" Height="20">
                         <ComboBox.ItemTemplate>
@@ -48,7 +46,27 @@
                             <TextBlock Text="  Clear " Margin="1 3 0 0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <!--</StackPanel>-->
+
+                        <Button Style="{StaticResource MyButton}" Name="LoadPreset" Click="LoadPreset_Click" Margin="5,0,5,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/LoadPreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MyButton}" Name="SavePreset" Click="SavePreset_Click" Margin="2,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/SavePreset.png" Height="20" Width="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource MyButton}" Name="ChoosePreset" Margin="5,0,5,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Presets: "/>
+                                <ComboBox Name="PresetCombobox" Width="100" Margin="0 2 0 2 ">
+
+                                </ComboBox>
+                            </StackPanel>
+                        </Button>
+              
+                        
                 </ToolBar>
 
             </ToolBarTray>
