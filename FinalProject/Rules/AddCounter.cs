@@ -27,11 +27,17 @@ namespace FinalProject.Rules
         static public int FileCount = MainWindow.fileCount;
         public string Transform(string origin)
         {
+
             FileCount++;
-            int dotIndex = origin.LastIndexOf(".");
-            string ext = origin.Substring(dotIndex);
-            string name = origin.Substring(0, dotIndex);
-            return $"{name} ({FileCount}){ext}";
+            if (origin.Contains("."))
+            {
+                int dotIndex = origin.LastIndexOf(".");
+                string ext = origin.Substring(dotIndex);
+                string name = origin.Substring(0, dotIndex);
+                return $"{name} ({FileCount}){ext}";
+            }
+            else
+            return $"{origin} ({FileCount})";
         }
     }
 }
